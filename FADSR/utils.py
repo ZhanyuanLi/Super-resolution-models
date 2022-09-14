@@ -174,7 +174,7 @@ def validationOrTest(dataset_path, hr_shape, scale, model, criterion_pixel, epoc
                 save_image(SR_01, "images_valid/SR_%d_%s.tif" % (epoch, img_name), normalize=False)
 
                 # Original high-resolution image
-                HR_01 = denormalize(imgs_hr, valid_mean, valid_std)  # 利用mean和std归一化到0-1
+                HR_01 = denormalize(imgs_hr, valid_mean, valid_std)
                 save_image(HR_01, "images_valid/HR_%d_%s.tif" % (epoch, img_name), normalize=False)
 
     return losses.avg, psnr.avg, ssim.avg
