@@ -203,7 +203,7 @@ def validationOrTest(dataset_path, hr_shape, scale, model_generator, model_discr
             cal_ssim_hr = copy.deepcopy(imgs_hr)
             ssim.update(calculate_ssim(cal_ssim_sr, cal_ssim_hr, valid_mean, valid_std))
 
-            if epoch == 99 or epoch == 199:
+            if epoch == 199:
                 # Name of the image
                 img_name = imgs['path'][0].rsplit("\\")[-1]
 
