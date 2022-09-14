@@ -59,6 +59,8 @@ class ModelFADSR(nn.Module):
         self.tail = nn.Sequential(
             nn.Conv2d(filters, feats, 3, padding=1),
             nn.PixelShuffle(scale),
+            # Upsampling with "Deconvolution" method. Size = Stride - 1
+            # nn.ConvTranspose2d(feats, channels, kernel_size=4, stride=5, padding=0, output_padding=1)
         )
 
         # ----------
@@ -66,7 +68,9 @@ class ModelFADSR(nn.Module):
         # ----------
         self.skip = nn.Sequential(
             nn.Conv2d(channels, feats, 5, padding=2),
-            nn.PixelShuffle(scale)
+            nn.PixelShuffle(scale),
+            # Upsampling with "Deconvolution" method. Size = Stride - 1
+            # nn.ConvTranspose2d(feats, channels, kernel_size=4, stride=5, padding=0, output_padding=1)
         )
 
     def forward(self, x):
@@ -77,3 +81,4 @@ class ModelFADSR(nn.Module):
         x += s
 
         return x
+
