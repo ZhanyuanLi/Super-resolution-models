@@ -55,7 +55,7 @@ def main():
 
     # From the second cycle, load the trained model.
     if opt.epoch != 0:
-        model.load_state_dict(torch.load("saved_models/generator_%d.pth" % opt.epoch))
+        model.load_state_dict(torch.load("saved_models/model_%d.pth" % opt.epoch))
 
     # Set optimizer
     optimizer_model = torch.optim.Adam(model.parameters(), lr=opt.lr, betas=(opt.b1, opt.b2))
@@ -89,12 +89,12 @@ def main():
             imgs_hr = Variable(imgs["hr"].type(Tensor))
 
             # ------------------
-            #  Train Generators
+            #  Train Model
             # ------------------
 
             optimizer_model.zero_grad()
 
-            # Generate high-resolution images from low-resolution images using the generator.
+            # Generate high-resolution images from low-resolution images using the model.
             imgs_sr = model(imgs_lr)
 
             # Loss
@@ -123,7 +123,6 @@ def main():
                 img_grid = denormalize(torch.cat((imgs_lr, imgs_sr, imgs_hr), -1), train_mean, train_std)
                 save_image(img_grid, "images_train/%d_%s.tif" % (batches_done, imgs['path'][0].rsplit("\\")[-1]),
                            nrow=1, normalize=False)
-
 
         # The mean value of the loss of this epoch
         train_loss = losses.avg
