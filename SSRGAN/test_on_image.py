@@ -23,8 +23,7 @@ os.makedirs("outputs", exist_ok=True)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Define model and load model checkpoint
-generator = Generator(channels=opt.channels, scale=5, filters=64,
-                              num_res_blocks=8).to(device)
+generator = Generator(channels=opt.channels, scale=5).to(device)
 generator.load_state_dict(torch.load(opt.checkpoint_model))
 generator.eval()
 
