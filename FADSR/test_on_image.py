@@ -1,4 +1,4 @@
-from models_no import MODEL
+from models import ModelFADSR
 from datasets import denormalize, MeanStd
 import torch
 from torch.autograd import Variable
@@ -25,7 +25,7 @@ os.makedirs("outputs", exist_ok=True)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Define model and load model checkpoint
-model = MODEL(scale=opt.scale).to(device)
+model = ModelFADSR(scale=opt.scale).to(device)
 model.load_state_dict(torch.load(opt.checkpoint_model))
 model.eval()
 
