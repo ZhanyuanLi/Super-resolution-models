@@ -172,6 +172,8 @@ def validationOrTest(dataset_path, hr_shape, scale, model, criterion_pixel, epoc
                 # Save model-generated high-resolution image
                 SR_01 = denormalize(imgs_sr, valid_mean, valid_std)
                 save_image(SR_01, "images_valid/SR_%d_%s.tif" % (epoch, img_name), normalize=False)
+                # Only single output rainfall data: the first band is rainfall data
+                # save_image(SR_01[0][0], "images_valid/SR_%d_%s.tif" % (epoch, img_name), normalize=False)
 
                 # Original high-resolution image
                 HR_01 = denormalize(imgs_hr, valid_mean, valid_std)
