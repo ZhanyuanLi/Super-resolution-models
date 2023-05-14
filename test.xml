@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cameras>
+	<camera>
+		<point ID="001">
+			<name>11111111111</name>
+			<code>2222222222222</code>
+			<url>11111111111</url>
+		</point>
+		<point ID="002">
+			<name>11111111111</name>
+			<code>2222222222222</code>
+			<url>11111111111</url>
+		</point>
+		<point ID="003">
+			<name>11111111111</name>
+			<code>2222222222222</code>
+			<url>11111111111</url>
+		</point>
+		<point ID="004">
+			<name>11111111111</name>
+			<code>2222222222222</code>
+			<url>11111111111</url>
+		</point>
+	</camera>
+	<params>
+		<log on_off="on" level="info">11111111111</log>
+		<multiprocessing_on_off>11111111111</multiprocessing_on_off>
+	</params>
+</cameras>
